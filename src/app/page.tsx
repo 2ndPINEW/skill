@@ -1,16 +1,17 @@
+'use client'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.scss'
-import { Tag } from '@/components/tag'
+import { SkillBadge } from '@/components/SkillBadge'
 
 const inter = Inter({ subsets: ['latin'] })
 
 export default function Home() {
   return (
     <main className={styles.main}>
-      <Tag prop={{ id: 1, name: 'Tag1' }}></Tag>
-      <Tag prop={{ id: 2, name: 'Tag2' }}></Tag>
-      <Tag prop={{ id: 3, name: 'Tag3' }}></Tag>
+      <SkillBadge id={1}>SkillBadge1</SkillBadge>
+      <SkillBadge id={2}>SkillBadge2</SkillBadge>
+      <SkillBadge id={3}>SkillBadge3</SkillBadge>
 
       <div className={styles.description}>
         <p>
