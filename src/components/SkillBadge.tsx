@@ -2,7 +2,7 @@ import Link, { LinkProps } from "next/link"
 import { ReactNode } from "react"
 
 type SkillBadgeProp = {
-  id: number
+  id: string
   children: ReactNode
 } & Omit<LinkProps, 'href'>
 

@@ -1,41 +1,28 @@
-'use client'
 import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.scss'
 import { SkillBadge } from '@/components/SkillBadge'
+import { EndPoints } from '@/types/cms-types'
+import { MicroCMS } from 'microcms-lib'
 
 const inter = Inter({ subsets: ['latin'] })
 
-export default function Home() {
+const cms = new MicroCMS<EndPoints>({
+  service: process.env.MICRO_CMS_SERVICE_NAME,
+  apiKey: process.env.MICRO_CMS_API_KEY
+})
+
+export default async function Home() {
+  const data = await cms.gets('skills')
+  const contents = data?.contents
+
   return (
     <main className={styles.main}>
-      <SkillBadge id={1}>SkillBadge1</SkillBadge>
-      <SkillBadge id={2}>SkillBadge2</SkillBadge>
-      <SkillBadge id={3}>SkillBadge3</SkillBadge>
-
-      <div className={styles.description}>
-        <p>
-          Get started by editing&nbsp;
-          <code className={styles.code}>app/page.tsx</code>
-        </p>
-        <div>
-          <a
-            href="https://vercel.com?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            By{' '}
-            <Image
-              src="/vercel.svg"
-              alt="Vercel Logo"
-              className={styles.vercelLogo}
-              width={100}
-              height={24}
-              priority
-            />
-          </a>
-        </div>
-      </div>
+      {
+        contents?.map((content) => {
+          return <SkillBadge key={content.id} id={content.id}>{content.label}</SkillBadge>
+        })
+      }
 
       <div className={styles.center}>
         <Image
@@ -63,32 +50,6 @@ export default function Home() {
           </h2>
           <p className={inter.className}>
             Find in-depth information about Next.js features and API.
-          </p>
-        </a>
-
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Templates <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>Explore the Next.js 13 playground.</p>
-        </a>
-
-        <a
-          href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          className={styles.card}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <h2 className={inter.className}>
-            Deploy <span>-&gt;</span>
-          </h2>
-          <p className={inter.className}>
-            Instantly deploy your Next.js site to a shareable URL with Vercel.
           </p>
         </a>
       </div>
