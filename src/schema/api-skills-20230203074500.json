@@ -1,0 +1,1 @@
+{"apiFields":[{"idValue":"8ZjAntDs9g","fieldId":"label","name":"ラベル","kind":"text","required":true,"isUnique":true},{"fieldId":"like_rate","name":"好き度","kind":"number","required":true},{"fieldId":"forte_rate","name":"得意度","kind":"number","required":true},{"fieldId":"logo_image","name":"ロゴ画像URL","kind":"media"}],"customFields":[]}
