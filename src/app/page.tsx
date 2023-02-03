@@ -2,18 +2,12 @@ import Image from 'next/image'
 import { Inter } from '@next/font/google'
 import styles from './page.module.scss'
 import { SkillBadge } from '@/components/SkillBadge'
-import { EndPoints } from '@/types/cms-types'
-import { MicroCMS } from 'microcms-lib'
+import { endPoints } from '@/pages/api/api'
 
 const inter = Inter({ subsets: ['latin'] })
 
-const cms = new MicroCMS<EndPoints>({
-  service: process.env.MICRO_CMS_SERVICE_NAME,
-  apiKey: process.env.MICRO_CMS_API_KEY
-})
-
 export default async function Home() {
-  const data = await cms.gets('skills')
+  const data = await endPoints.gets('skills')
   const contents = data?.contents
 
   return (
