@@ -45,8 +45,8 @@ export const SkillBadge = ({ content, ...props }: SkillBadgeProp) => {
         <Image
           src={content.logo_image.url}
           alt={content.label}
-          width="32"
-          height="32"
+          width="36"
+          height="36"
         ></Image>
       ) : (
         <div className={styles.text_label}>{content.label}</div>
