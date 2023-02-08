@@ -9,9 +9,8 @@ type SkillBadgeProp = {
 } & Omit<LinkProps, "href">;
 
 export const SkillBadge = ({ content, ...props }: SkillBadgeProp) => {
-  const padding = 64 * 2
-  const height = window.innerHeight - padding
-  const width = window.innerWidth - padding
+  const height = window.innerHeight - 200
+  const width = window.innerWidth - 280
   const top = `${height - height * content.like_rate}px`
   const left = `${width * content.forte_rate}px`
   return (
