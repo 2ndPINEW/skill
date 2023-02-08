@@ -8,6 +8,11 @@ const nextConfig = {
   env: {
     MICRO_CMS_SERVICE_NAME: process.env.SERVICE,
     MICRO_CMS_API_KEY: process.env.APIKEY
+  },
+  images: {
+    domains: [
+      'images.microcms-assets.io'
+    ]
   }
 }
 
