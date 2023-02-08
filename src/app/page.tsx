@@ -13,6 +13,9 @@ export default async function Home() {
         <div className={`${styles.label} ${styles.label_dislike}`}>😱</div>
         <div className={`${styles.label} ${styles.label_good_at}`}>😎</div>
         <div className={`${styles.label} ${styles.label_bad_at}`}>😓</div>
+        <div className={`${styles.axis} ${styles.laxis}`}></div>
+        <div className={`${styles.axis} ${styles.raxis}`}></div>
+        <div className={`${styles.axis} ${styles.vaxis}`}></div>
       </div>
       <div className={styles.skill_area}>
         <div className={styles.skill_area_relative}>

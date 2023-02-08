@@ -10,13 +10,33 @@
 .axis_area {
   display: grid;
   grid-template: 
-    "....... ....... love    ....... ......." 50px
-    "....... ....... ....... ....... ......." 1fr
-    "bad     ....... ....... ....... good   " 50px
-    "....... ....... ....... ....... ......." 1fr
-    "....... ....... dislike ....... ......." 50px
-    /50px    1fr     50px    1fr     50px;
+    "....... ....... love    love    love    ....... ......." 50px
+    "....... ....... ....... vaxis   ....... ....... ......." 1fr
+    "bad     ....... ....... vaxis   ....... ....... good   " 24.5px
+    "bad     laxis   laxis   vaxis   raxis   raxis   good   " 1px
+    "bad     ....... ....... vaxis   ....... ....... good   " 24.5px
+    "....... ....... ....... vaxis   ....... ....... ......." 1fr
+    "....... ....... dislike dislike dislike ....... ......." 50px
+    /50px    1fr     24.5px  1px     24.5px  1fr     50px;
   height: 100%;
+}
+
+.axis {
+  background-color: var(--color-axis);
+  width: 100%;
+  height: 100%;
+}
+
+.laxis {
+  grid-area: laxis;
+}
+
+.raxis {
+  grid-area: raxis;
+}
+
+.vaxis {
+  grid-area: vaxis;
 }
 
 .label {
