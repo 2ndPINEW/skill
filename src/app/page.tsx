@@ -3,7 +3,9 @@ import { SkillBadge } from '@/components/SkillBadge'
 import { endPoints } from '@/pages/api/api'
 
 export default async function Home() {
-  const data = await endPoints.gets('skills')
+  const data = await endPoints.gets('skills', {
+    limit: 100
+  })
   const contents = data?.contents
 
   return (
