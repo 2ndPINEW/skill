@@ -2,6 +2,7 @@
 import { skills } from "@/types/cms-types";
 import Image from "next/image";
 import Link, { LinkProps } from "next/link";
+import React from "react";
 import styles from './SkillBadge.module.scss'
 
 type SkillBadgeProp = {
@@ -9,15 +10,35 @@ type SkillBadgeProp = {
 } & Omit<LinkProps, "href">;
 
 export const SkillBadge = ({ content, ...props }: SkillBadgeProp) => {
-  const height = window.innerHeight - 200
-  const width = window.innerWidth - 280
-  const top = `${height - height * content.like_rate}px`
-  const left = `${width * content.forte_rate}px`
+  function top () {
+    const height = window.innerHeight - 200
+    return `${height - height * content.like_rate}px`
+  }
+  function left () {
+    const width = window.innerWidth - 280
+    return `${width * content.forte_rate}px`
+  }
+  const [dimensions, setDimensions] = React.useState({ 
+    top: top(),
+    left: left()
+  })
+  React.useEffect(() => {
+    function handleResize() {
+      window.setTimeout(() => {
+        setDimensions({
+          top: top(),
+          left: left()
+        })
+      })
+    }
+    window.addEventListener('resize', handleResize)
+  })
+
   return (
     <Link
       href={`/skills/${content.id}`}
       {...props}
-      style={{ top, left }}
+      style={{ top: dimensions.top, left: dimensions.left }}
       className={styles.host}
     >
       {content.logo_image ? (
