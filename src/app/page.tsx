@@ -15,11 +15,13 @@ export default async function Home() {
         <div className={`${styles.label} ${styles.label_bad_at}`}>😓</div>
       </div>
       <div className={styles.skill_area}>
-        {
-          contents?.map((content) => {
-            return <SkillBadge key={content.id} content={content} />
-          })
-        }
+        <div className={styles.skill_area_relative}>
+          {
+            contents?.map((content) => {
+              return <SkillBadge key={content.id} content={content} />
+            })
+          }
+        </div>
       </div>
     </main>
   )
