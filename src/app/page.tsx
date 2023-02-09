@@ -1,6 +1,7 @@
 import styles from './page.module.scss'
 import { SkillBadge } from '@/components/SkillBadge'
 import { endPoints } from '@/pages/api/api'
+import Link from 'next/link'
 
 export default async function Home() {
   const data = await endPoints.gets('skills', {
@@ -35,6 +36,7 @@ export default async function Home() {
           }
         </div>
       </div>
+      <Link className={styles.src_link} href="https://github.com/2ndPINEW/skill">Src on GitHub</Link>
     </main>
   )
 }
