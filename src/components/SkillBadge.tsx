@@ -3,7 +3,7 @@
 import { skills } from "@/types/cms-types";
 import Image from "next/image";
 import Link, { LinkProps } from "next/link";
-import { useEffect, useState } from "react";
+import { useLayoutEffect, useState } from "react";
 import styles from './SkillBadge.module.scss'
 
 type SkillBadgeProp = {
@@ -11,38 +11,38 @@ type SkillBadgeProp = {
 } & Omit<LinkProps, "href">;
 
 export const SkillBadge = ({ content, ...props }: SkillBadgeProp) => {
-  function top (): string {
-    if (dimensions.height === 0) return '-1000px'
-    return `${dimensions.height - dimensions.height * content.like_rate}px`
-  }
-  function left (): string {
-    if (dimensions.width === 0) return '-1000px'
-    return `${dimensions.width * content.forte_rate}px`
-  }
-
   const [dimensions, setDimensions] = useState({ 
-    width: 0,
-    height: 0
+    top: '-1000px',
+    left: '-1000px'
   })
 
-  useEffect(() => {
+  useLayoutEffect(() => {
+    function top (): string {
+      const height = window.innerHeight - 200
+      return `${height - height * content.like_rate}px`
+    }
+    function left (): string {
+      const width = window.innerWidth - 280
+      return `${width * content.forte_rate}px`
+    }
+  
     function handleResize() {
-      window.setTimeout(() => {
-        setDimensions({
-          width: window.innerWidth,
-          height: window.innerHeight
-        })
+      setDimensions({
+        top: top(),
+        left: left()
       })
     }
+
     window.addEventListener('resize', handleResize)
     handleResize()
-  })
+    return () => window.removeEventListener('resize', handleResize)
+  }, [content.forte_rate, content.like_rate])
 
   return (
     <Link
       href={`/skills/${content.id}`}
       {...props}
-      style={{ top: top(), left: left() }}
+      style={{ top: dimensions.top, left: dimensions.left }}
       className={styles.host}
     >
       {content.logo_image ? (
