@@ -3,7 +3,7 @@
 import { skills } from "@/types/cms-types";
 import Image from "next/image";
 import Link, { LinkProps } from "next/link";
-import { useLayoutEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import styles from './SkillBadge.module.scss'
 
 type SkillBadgeProp = {
@@ -16,7 +16,7 @@ export const SkillBadge = ({ content, ...props }: SkillBadgeProp) => {
     left: '-1000px'
   })
 
-  useLayoutEffect(() => {
+  useEffect(() => {
     function top (): string {
       const height = window.innerHeight - 200
       return `${height - height * content.like_rate}px`
