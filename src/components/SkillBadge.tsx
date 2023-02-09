@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 import styles from './SkillBadge.module.scss'
 
 type SkillBadgeProp = {
-  content: skills<"get">;
+  content: Pick<skills<"get">, 'id' | 'label' | 'like_rate' | 'forte_rate' | 'logo_image'>;
 } & Omit<LinkProps, "href">;
 
 export const SkillBadge = ({ content, ...props }: SkillBadgeProp) => {
