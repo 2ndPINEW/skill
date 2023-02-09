@@ -2,7 +2,7 @@
   --max-width: 1100px;
   --border-radius: 12px;
   --color-background: #ffffff;
-  --color-badge: #598DD1;
+  --color-badge: #2975d8;
   --color-on-badge: #ffffff;
   --color-axis: #929292;
 }
@@ -10,7 +10,7 @@
 @media (prefers-color-scheme: dark) {
   :root {
     --color-background: #000000;
-    --color-badge: #598DD1;
+    --color-badge: #2975d8;
     --color-on-badge: #ffffff;
     --color-axis: #575757;
   }
