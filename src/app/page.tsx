@@ -4,7 +4,14 @@ import { endPoints } from '@/pages/api/api'
 
 export default async function Home() {
   const data = await endPoints.gets('skills', {
-    limit: 100
+    limit: 100,
+    fields: [
+      'id',
+      'label',
+      'like_rate',
+      'forte_rate',
+      'logo_image'
+    ]
   })
   const contents = data?.contents
 
