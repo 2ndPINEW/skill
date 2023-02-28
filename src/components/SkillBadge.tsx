@@ -25,6 +25,13 @@ export const SkillBadge = ({ content, ...props }: SkillBadgeProp) => {
       const width = window.innerWidth - 280
       return `${width * content.forte_rate}px`
     }
+
+    function initPosition () {
+      setDimensions({
+        top: `${(window.innerHeight-200)/2}px`,
+        left: `${(window.innerWidth-280)/2}px`
+      })
+    }
   
     function handleResize() {
       setDimensions({
@@ -33,8 +40,12 @@ export const SkillBadge = ({ content, ...props }: SkillBadgeProp) => {
       })
     }
 
+    initPosition()
+    window.setTimeout(() => {
+      handleResize()
+    }, 500)
+
     window.addEventListener('resize', handleResize)
-    handleResize()
     return () => window.removeEventListener('resize', handleResize)
   }, [content.forte_rate, content.like_rate])
 
