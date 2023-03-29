@@ -12,8 +12,8 @@ type SkillBadgeProp = {
 
 export const SkillBadge = ({ content, ...props }: SkillBadgeProp) => {
   const [dimensions, setDimensions] = useState({ 
-    top: '-1000px',
-    left: '-1000px'
+    top: 'calc(50vh - 100px)',
+    left: 'calc(50vw - 140px)'
   })
 
   useEffect(() => {
@@ -41,9 +41,7 @@ export const SkillBadge = ({ content, ...props }: SkillBadgeProp) => {
     }
 
     initPosition()
-    window.setTimeout(() => {
-      handleResize()
-    }, 500)
+    handleResize()
 
     window.addEventListener('resize', handleResize)
     return () => window.removeEventListener('resize', handleResize)
